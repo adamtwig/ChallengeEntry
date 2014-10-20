@@ -1,0 +1,44 @@
+       2000_Kings County, New York City, NY  2000_Philadelphia County, Philadelphia, PA 
+                                          1                                           1 
+   2000_District of Columbia, Washington DC             2050_Suffolk County, Boston, MA 
+                                          1                                           1 
+   2000_Los Angeles County, Los Angeles, CA               2000_Cook County, Chicago, IL 
+                                          2                                           3 
+       2000_Marion County, Indianapolis, IN          2000_Franklin County, Columbus, OH 
+                                          3                                           3 
+            2000_Suffolk County, Boston, MA              2050_Wayne County, Detroit, MI 
+                                          3                                           3 
+           2000_Harris Country, Houston, TX          2000_Bexar County, San Antonio, TX 
+                                          4                                           4 
+             2050_Dallas County, Dallas, TX          2000_Maricopa Country, Phoenix, AZ 
+                                          4                                           5 
+                      2050_Clark County, NV        2000_San Diego County, San Diego, CA 
+                                          5                                           6 
+   2050_Los Angeles County, Los Angeles, CA              2000_Dallas County, Dallas, TX 
+                                          6                                           7 
+                      2000_Clark County, NV             2050_Shelby County, Memphis, TN 
+                                          7                                           7 
+            2000_Duval County, Jacksonville            2050_Harris Country, Houston, TX 
+                                          8                                           8 
+2000_San Francisco County, San Francisco CA      2000_Mecklenburg County, Charlotte, NC 
+                                          9                                          10 
+             2000_Wayne County, Detroit, MI             2000_Shelby County, Memphis, TN 
+                                         11                                          12 
+ 2050_Philadelphia County, Philadelphia, PA      2050_Mecklenburg County, Charlotte, NC 
+                                         12                                          12 
+   2050_District of Columbia, Washington DC       2050_Jefferson County, Louisville, KY 
+                                         12                                          12 
+       2000_King County, Seattle Washington              2000_Denver County, Denver, CO 
+                                         13                                          14 
+      2000_Jefferson County, Louisville, KY               2050_Cook County, Chicago, IL 
+                                         15                                          15 
+       2050_Marion County, Indianapolis, IN          2050_Franklin County, Columbus, OH 
+                                         15                                          15 
+             2050_Denver County, Denver, CO        2050_Kings County, New York City, NY 
+                                         15                                          16 
+         2050_Maricopa Country, Phoenix, AZ          2050_Bexar County, San Antonio, TX 
+                                         17                                          18 
+       2050_San Diego County, San Diego, CA             2050_Duval County, Jacksonville 
+                                         19                                          20 
+2050_San Francisco County, San Francisco CA        2050_King County, Seattle Washington 
+                                         21                                          22 
