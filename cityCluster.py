@@ -21,7 +21,6 @@ import sys
 import numpy
 import netCDF4 as netCDF
 from sklearn.cluster import KMeans
-#numpy.set_printoptions(threshold=numpy.nan)
 
 # find the datasets we want to work with
 historical_pr = '/mnt/s3-nexdcp30/NEX-quartile/historical/mon/atmos/pr/r1i1p1/v1.0/CONUS/pr_ens-avg_amon_historical_CONUS_200001-200412.nc'
@@ -35,23 +34,8 @@ rcp45_tasmin = '/mnt/s3-nexdcp30/NEX-quartile/rcp45/mon/atmos/tasmin/r1i1p1/v1.0
 # convert the data into netCDF format
 print 'Processing ' + historical_pr
 py_hist_pr =  netCDF.Dataset(historical_pr, 'r')
-#ndim1 = len(py_hist_pr.dimensions['time'])
-#print py_hist_pr.variables['pr'], py_hist_pr.variables['time'], py_hist_pr.variables['lat'], py_hist_pr.variables['lon']
-#print py_hist_pr.variables['lat_bnds'], py_hist_pr.variables['lon_bnds'], py_hist_pr.variables['time_bnds']
-
-#print py_hist_pr.variables['time']
-
 print 'Processing ' + historical_tasmax
 py_hist_tasmax = netCDF.Dataset(historical_tasmax, 'r')
-
-data = array(py_hist_tasmax.variables['tasmax'][1,::10,::10])
-lat = array(py_hist_tasmax.variables['lat'][::10])
-lon = array(py_hist_tasmax.variables['lon'][::10])-360
-
-#data = ma.masked_where(data==1e+20, data-273.15)
-
-print data, lat, lon
-
 print 'Processing ' + historical_tasmin
 py_hist_tasmin = netCDF.Dataset(historical_tasmin, 'r')
 
@@ -61,21 +45,6 @@ print 'Processing ' + rcp45_tasmax
 py_rcp45_tasmax = netCDF.Dataset(rcp45_tasmax, 'r')
 print 'Processing ' + rcp45_tasmin
 py_rcp45_tasmin = netCDF.Dataset(rcp45_tasmin, 'r')
-
-#ndim1 = len(py_hist_pr.dimensions['time'])
-#ndim2 = len(py_hist_tasmax.dimensions['time'])
-#ndim3 = len(py_hist_tasmin.dimensions['time'])
-#ndim4 = len(py_rcp45_pr.dimensions['time'])
-#ndim5 = len(py_rcp45_tasmax.dimensions['time'])
-#ndim6 = len(py_rcp45_tasmin.dimensions['time'])
-
-#time1 = py_hist_pr.dimensions['time']
-#time2 = py_hist_tasmax.dimensions['time']
-#time3 = py_hist_tasmin.dimensions['time']
-#time4 = py_rcp45_pr.dimensions['time']
-#time5 = py_rcp45_tasmax.dimensions['time']
-#time6 = py_rcp45_tasmin.dimensions['time']
-#print ndim1, ndim2, ndim3, ndim4, ndim5, ndim6
 
 print 'Getting 2000 - 2004 precipitation variables'
 hist_pr_data = py_hist_pr.variables['pr'][1, :, :]
@@ -145,4 +114,64 @@ print rcp45_tasmax_data, rcp45_tasmax_lat, rcp45_tasmax_lon, rcp45_tasmax_time
 print '2046 - 2050 Min Temp'
 print rcp45_tasmin_data, rcp45_tasmin_lat, rcp45_tasmin_lon, rcp45_tasmin_time
 
-                                                       
+# next steps
+
+# okay, we've got the six datasets, now what?
+
+# we have to pick out only the years 2000 and 2050, 
+# thus removing 2001, 2002, 2003, 2004, and
+# 2046, 2047, 2048, and 2049
+
+# pseudocode:
+# 12 months * 5 years = 60 values
+# hist_pr <- hist_pr[first twelve]
+# hist_pr <- hist_pr[1:20]
+# rcp45_pr <- rcp45_pr[last twelve]
+# rcp45_pr <- rcp45_pr[49:60]
+
+# okay, now we've got a dataset for only two years
+
+# what do we do about the months?
+# currently the data looks like:
+# temp(year, month) lat lon
+# 225(2000, 01)  41.5   238.1
+# 229(2000, 02)  41.5   238.1
+# 231(2000, 03)  41.5   238.1
+# ...
+# 222(2000, 12)  41.5   238.1
+# 224(2000, 01)  38.4   223.5
+# 225(2000, 02)  38.4   223.5
+# 234(2000, 03)  38.4   223.5
+# ...
+# 220(2000, 12)  38.4   223.5
+
+# what do we want it to look like?
+#            Jan00  Feb00  Mar00 ...  Dec00
+# Chicago    225    229    231   ...  222
+# Detroit    222    224    225   ...  220 
+
+# what is missing? 
+# 1) transposition of months
+# 2) labels for cities
+
+# what is the bottleneck?
+# the dataset is too big
+# regular or intuitive search algorithms are too inefficient
+# lat and lon are not sorted, binary search won't work
+
+
+# okay, let's assume we figured out how to get our dataset in the correct form
+# do we need to normalize before we run k-means?
+# either way, let's assume we did one or the other
+# code for k-means would look something like:
+# KMeans(init='k-means++', n_clusters=11, n_init=10),
+#              name="k-means++", data=data)
+#
+# We would save a new table that would look something like:
+# city1      city2     lat1    lon1    lat2   lon2    pr101  pr201  mintemp101  mintemp101   maxtemp101  maxtemp201
+# Boston     Memphis   42.3    288.9   35.1   270.0   ?        ?       ?           ?              ?         ?
+
+
+# final piece would be to add some sort of graphic or animation
+
+# basemap functionality could draw a map for us
