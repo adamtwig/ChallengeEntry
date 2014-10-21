@@ -22,15 +22,20 @@ To run the R Script, make sure you are in the directory "/usr/local/src".
 From there you have two choices:
 
 1) run R and then source
+
 2) run the script from command line
 
 1a) type R while located in the correct directory
+
 1b) type source('pamAndDaisies.R')
+
 1c) type q() to leave the R window
+
 1d) to view the clusters, open a text editor to view 'padOut.txt'
    ex. vim padOut.txt
 
 2a) type R CMD BATCH pamAndDaisies.R
-2b) view what ran in R in the pamAndDaisies.ROut
-2c) repeat step 1d, by opening a text editor to view clusters
 
+2b) view what ran in R in the pamAndDaisies.ROut
+
+2c) repeat step 1d, by opening a text editor to view clusters
