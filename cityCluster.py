@@ -154,24 +154,12 @@ print rcp45_tasmin_data, rcp45_tasmin_lat, rcp45_tasmin_lon, rcp45_tasmin_time
 # 1) transposition of months
 # 2) labels for cities
 
-# what is the bottleneck?
-# the dataset is too big
-# regular or intuitive search algorithms are too inefficient
-# lat and lon are not sorted, binary search won't work
-
-
-# okay, let's assume we figured out how to get our dataset in the correct form
-# do we need to normalize before we run k-means?
-# either way, let's assume we did one or the other
-# code for k-means would look something like:
-# KMeans(init='k-means++', n_clusters=11, n_init=10),
-#              name="k-means++", data=data)
-#
-# We would save a new table that would look something like:
-# city1      city2     lat1    lon1    lat2   lon2    pr101  pr201  mintemp101  mintemp101   maxtemp101  maxtemp201
-# Boston     Memphis   42.3    288.9   35.1   270.0   ?        ?       ?           ?              ?         ?
-
-
-# final piece would be to add some sort of graphic or animation
-
-# basemap functionality could draw a map for us
+# final step -- output data to csv files
+# example output shown below
+# import csv
+# with open('test.csv', 'w', newline='') as fp:
+#    a = csv.writer(fp, delimiter=',')
+#    data = [['Me', 'You'],
+#            ['293', '219'],
+#            ['54', '13']]
+#    a.writerows(data)
