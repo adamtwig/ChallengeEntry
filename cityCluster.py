@@ -1,12 +1,12 @@
 '''
-Adam Terwilliger
+Developer: Anonymized for Competition
 Version 1.0
 October 17, 2014
 Objective: Utilize large-scale climate data hosted by NASA to find
            a historical and predicted pair of cities that have similar climates
 Resources: packages -- numpy, netCDF4, scikit-learn
            dataset -- NASA Earth Exchange (NEX) Downscaled Climate Projections (NEX-DCP30)
-Collaborators: Dr. Ed Aboufadel
+Collaborators: Anonymized for Competition
 ---------------------------------------------------------------------------------
 We specifically worked with the greenhouse gas emissions scenario known as Representative Concentration Pathways (4.5 RCP)
 for the ensemble statistics calculated from all model runs available. We ran our k-means clustering algorithm
