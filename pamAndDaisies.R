@@ -1,4 +1,4 @@
-# Adam Terwilliger
+# Developer: Anonymized for Competition
 # Version 2 -- October 21, 2014
 # K-means clustering on climate change projections
 # Data: NEX-DCP30 - Downscaled Climate Projections dataset 
@@ -7,9 +7,9 @@
 # Obtained: http://www.usgs.gov/climate_landuse/clu_rd/apps/nccv_viewer.asp
 # Entry part of Innocentive NASA Challenge: 
 #     Build an App to Utilize OpenNEX Climate and Earth Science Data
-# Acknowledgements -- Dr. Ed Aboufadel
+# Acknowledgements -- Anonymized for Competition
 
-rawProjections <- read.csv('C:/Users/Adam/Desktop/Research/top22cityreducedprojections.csv')
+rawProjections <- read.csv('/usr/local/src/ProjectionData.csv')
 
 columnHeadingsVars <- rep(c('MinTemp85','MaxTemp85','Precip85'), each=12)
 
